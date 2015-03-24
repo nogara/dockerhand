@@ -94,6 +94,10 @@ func cleanVolumes(cmd *cobra.Command, args []string) {
 		return
 	}
 	rootDir := info.Get("DockerRootDir")
+	if rootDir == "" {
+		logrus.Error("unable to get docker root dir")
+		return
+	}
 	volumesDir := path.Join(rootDir, "volumes")
 	vfsDir := path.Join(rootDir, "vfs", "dir")
 
